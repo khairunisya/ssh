@@ -5,13 +5,11 @@ cd
 figlet -f slant Install WS | lolcat
 # Install Template
 wget -q -O /usr/local/bin/ws-drop "https://raw.githubusercontent.com/khairunisya/ssh/main/ws-dropbear.py"
-wget -q -O /usr/local/bin/ws-drop2 "https://raw.githubusercontent.com/khairunisya/ssh/main/ws-dropbear2.py"
 wget -q -O /usr/local/bin/ws-openssh "https://raw.githubusercontent.com/khairunisya/ssh/main/ws-openssh.py"
 wget -q -O /usr/local/bin/ws-ovpn "https://raw.githubusercontent.com/khairunisya/ssh/main/ws-ovpn.py"
 wget -q -O /usr/local/bin/ws-tls "https://raw.githubusercontent.com/khairunisya/ssh/main/ws-tls.py"
 
 chmod +x /usr/local/bin/ws-drop
-chmod +x /usr/local/bin/ws-drop2
 chmod +x /usr/local/bin/ws-openssh
 chmod +x /usr/local/bin/ws-ovpn
 chmod +x /usr/local/bin/ws-tls
@@ -31,24 +29,6 @@ CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
 ExecStart=/usr/bin/python -O /usr/local/bin/ws-drop
-Restart=on-failure
-[Install]
-WantedBy=multi-user.target
-END
-
-# Dropbear2
-cat > /etc/systemd/system/ws-dropbear2.service << END
-[Unit]
-Description=SSH Over CDN WS Dropbear
-Documentation=https://www.jrtunnel.com
-After=network.target nss-lookup.target
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-drop2
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target
