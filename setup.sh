@@ -88,6 +88,8 @@ wget -O /usr/bin/addssh https://raw.githubusercontent.com/khairunisya/ssh/main/a
 wget -O /usr/bin/member https://raw.githubusercontent.com/khairunisya/ssh/main/member.sh && chmod +x /usr/bin/member
 wget -O /usr/bin/delssh https://raw.githubusercontent.com/khairunisya/ssh/main/delssh.sh && chmod +x /usr/bin/delssh
 wget -O /usr/bin/delexp https://raw.githubusercontent.com/khairunisya/ssh/main/delexp.sh && chmod +x /usr/bin/delexp
+wget -O /usr/bin/cekssh https://raw.githubusercontent.com/khairunisya/ssh/main/cekssh.sh && chmod +x /usr/bin/cekssh
+wget -O /usr/bin/menu https://raw.githubusercontent.com/khairunisya/ssh/main/menu.sh && chmod +x /usr/bin/menu
 
 clear
 
