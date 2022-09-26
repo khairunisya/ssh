@@ -123,3 +123,5 @@ apt install grepcidr -y
 
 figlet -f slant Done Install WS | lolcat
 rm -f websock.sh
+rm -f master.zip
+rm -rf badvpn-master
