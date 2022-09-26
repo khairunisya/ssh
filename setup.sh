@@ -30,6 +30,8 @@ wget https://raw.githubusercontent.com/khairunisya/ssh/main/ssh-vpn.sh && chmod 
 
 wget https://raw.githubusercontent.com/khairunisya/ssh/main/websock.sh && chmod +x websock.sh && ./websock.sh
 
+wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/slowdnss/install-sldns.sh && chmod +x install-sldns.sh && ./install-sldns.sh
+
 rm -f cfo.sh
 rm -f ssh-vpn.sh
 rm -f websock.sh
