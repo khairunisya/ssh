@@ -95,7 +95,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/etc/slowdns/sldns-client -udp 8.8.8.8:53 --pubkey-file /root/.dns/server.pub $nameserver 127.0.0.1:3369
+ExecStart=/etc/slowdns/sldns-client -udp 1.1.1.1:53 --pubkey-file /root/.dns/server.pub $nameserver 127.0.0.1:3369
 Restart=on-failure
 
 [Install]
