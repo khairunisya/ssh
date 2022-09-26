@@ -139,7 +139,7 @@ echo ""  | tee -a log-install.txt
 
 echo "=================================-[ AUTOSCRIPT PREMIUM ]-===========================" | tee -a log-install.txt
 
-echo "- Mod By M AFDHAN & NezaVPN" | tee -a log-install.txt
+echo "- Mod By Jrtunnel" | tee -a log-install.txt
 
 echo ""
 
