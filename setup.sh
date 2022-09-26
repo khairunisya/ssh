@@ -22,8 +22,6 @@ apt install -y bzip2 gzip coreutils screen curl
 apt install python -y
 mkdir /var/lib/premium-script;
 
-echo "IP=" >> /var/lib/premium-script/ipvps.conf
-
 wget https://raw.githubusercontent.com/khairunisya/ssh/main/cfo.sh && chmod +x cfo.sh && ./cfo.sh
 
 wget https://raw.githubusercontent.com/khairunisya/ssh/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
