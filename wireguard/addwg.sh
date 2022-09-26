@@ -33,7 +33,7 @@ SERVER_PUB_IP=$IP
 fi
 source /var/lib/premium-script/ipvps.conf
 if [[ "$IP2" = "" ]]; then
-domen=`cat /etc/xray/domain`
+domen=`cat /home/domain`
 else
 domain=$IP2
 fi
