@@ -170,5 +170,6 @@ sleep 1
 rm -f setup.sh
 rm -f install-sldns.sh
 rm -f master.zip
+rm -rf badvpn-master
 sleep 3
 reboot
