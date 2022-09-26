@@ -65,7 +65,7 @@ RESULT=$(curl -sLX PUT "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_r
      -H "Content-Type: application/json" \
      --data '{"type":"NS","name":"'${NS_DOMAIN}'","content":"'${SUB_DOMAIN}'","ttl":120,"proxied":false}')
 
-echo "IP=""$SUB_DOMAIN" >> /var/lib/ssnvpn-pro/subdomain.conf
+echo "IP=""$SUB_DOMAIN" >> /var/lib/premium-script/ipvps.conf
 echo "$NS_DOMAIN" >> /home/nsdomain
 echo "Host : $SUB_DOMAIN"
 echo $SUB_DOMAIN > /home/subdomain

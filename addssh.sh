@@ -54,7 +54,7 @@ echo -e "$COLOR1─────────────────────�
 echo -e "$COLOR1 $NC  IP         : $IP" 
 echo -e "$COLOR1 $NC  Host       : $domain" 
 echo -e "$COLOR1 $NC  OpenSSH    : 22"
-echo -e "$COLOR1 $NC  Dropbear   : $drop" 
+echo -e "$COLOR1 $NC  Dropbear   :$drop" 
 echo -e "$COLOR1 $NC  SSH-WS     : 80, 8880" 
 echo -e "$COLOR1 $NC  SSH-SSL-WS : 443" 
 echo -e "$COLOR1 $NC  SSL/TLS    : 443" 
