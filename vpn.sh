@@ -6,12 +6,16 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 ANU=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 
+# Link Hosting Kalian
+akbarvpn="raw.githubusercontent.com/khairunisya/vmess/main/ssh"
+
+# Install OpenVPN dan Easy-RSA
 # Install OpenVPN dan Easy-RSA
 apt install openvpn easy-rsa unzip -y
 apt install openssl iptables iptables-persistent -y
 mkdir -p /etc/openvpn/server/easy-rsa/
 cd /etc/openvpn/
-wget https://github.com/khairunisya/ssh/main/vpn.zip
+wget https://${akbarvpn}/vpn.zip
 unzip vpn.zip
 rm -f vpn.zip
 chown -R root:root /etc/openvpn/server/easy-rsa/
