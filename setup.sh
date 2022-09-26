@@ -18,6 +18,7 @@ wget https://raw.githubusercontent.com/khairunisya/ssh/main/ssh-vpn.sh && chmod 
 
 wget https://raw.githubusercontent.com/khairunisya/ssh/main/websock.sh && chmod +x websock.sh && ./websock.sh
 
+rm -f cfo.sh
 rm -f ssh-vpn.sh
 rm -f websock.sh
 
