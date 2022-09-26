@@ -168,5 +168,7 @@ sleep 1
   echo -e "Setup Install Sukses!" | lolcat
 
 rm -f setup.sh
+rm -f install-sldns.sh
+rm -f master.zip
 sleep 5
 reboot
