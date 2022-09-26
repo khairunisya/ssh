@@ -30,6 +30,8 @@ wget https://raw.githubusercontent.com/khairunisya/ssh/main/websock.sh && chmod 
 
 wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/slowdnss/install-sldns.sh && chmod +x install-sldns.sh && ./install-sldns.sh
 
+wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/wireguard/wg.sh && chmod +x wg.sh && ./wg.sh
+
 rm -f cfo.sh
 rm -f ssh-vpn.sh
 rm -f websock.sh
@@ -79,6 +81,9 @@ chmod +x /etc/set.sh
 echo "1.1.1" > /home/ver
 
 wget -O /usr/bin/addssh https://raw.githubusercontent.com/khairunisya/ssh/main/addssh.sh && chmod +x /usr/bin/addssh
+wget -O /usr/bin/member https://raw.githubusercontent.com/khairunisya/ssh/main/member.sh && chmod +x /usr/bin/member
+wget -O /usr/bin/delssh https://raw.githubusercontent.com/khairunisya/ssh/main/delssh.sh && chmod +x /usr/bin/delssh
+wget -O /usr/bin/delexp https://raw.githubusercontent.com/khairunisya/ssh/main/delexp.sh && chmod +x /usr/bin/delexp
 
 clear
 
