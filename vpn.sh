@@ -1,3 +1,31 @@
+#!/bin/bash
+# SL
+# ==========================================
+# Color
+RED='\033[0;31m'
+NC='\033[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHT='\033[0;37m'
+# ==========================================
+# Getting
+MYIP=$(wget -qO- ipinfo.io/ip);
+echo "Checking VPS"
+IZIN=$( curl ipinfo.io/ip | grep $MYIP )
+if [ $MYIP = $MYIP ]; then
+echo -e "${NC}${GREEN}Permission Accepted...${NC}"
+else
+echo -e "${NC}${RED}Permission Denied!${NC}";
+echo -e "${NC}${LIGHT}Fuck You!!"
+exit 0
+fi
+# Mod By SL
+# ==================================================
+# Link Hosting Kalian
+akbarvpn="raw.githubusercontent.com/khairunisya/ssh/main"
 
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
@@ -6,10 +34,6 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 ANU=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 
-# Link Hosting Kalian
-akbarvpn="raw.githubusercontent.com/khairunisya/vmess/main/ssh"
-
-# Install OpenVPN dan Easy-RSA
 # Install OpenVPN dan Easy-RSA
 apt install openvpn easy-rsa unzip -y
 apt install openssl iptables iptables-persistent -y
@@ -28,8 +52,8 @@ cp /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so /usr/lib
 sed -i 's/#AUTOSTART="all"/AUTOSTART="all"/g' /etc/default/openvpn
 
 # restart openvpn dan cek status openvpn
-systemctl enable --now openvpn-server@server-tcp-1194
-systemctl enable --now openvpn-server@server-udp-2200
+systemctl enable --now openvpn-server@server-tcp
+systemctl enable --now openvpn-server@server-udp
 /etc/init.d/openvpn restart
 /etc/init.d/openvpn status
 
@@ -38,7 +62,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 
 # Buat config client TCP 1194
-cat > /etc/openvpn/client-tcp-1194.ovpn <<-END
+cat > /etc/openvpn/tcp.ovpn <<-END
 client
 dev tun
 proto tcp
@@ -53,10 +77,10 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP2 /etc/openvpn/client-tcp-1194.ovpn;
+sed -i $MYIP2 /etc/openvpn/tcp.ovpn;
 
 # Buat config client UDP 2200
-cat > /etc/openvpn/client-udp-2200.ovpn <<-END
+cat > /etc/openvpn/udp.ovpn <<-END
 client
 dev tun
 proto udp
@@ -71,10 +95,10 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP2 /etc/openvpn/client-udp-2200.ovpn;
+sed -i $MYIP2 /etc/openvpn/udp.ovpn;
 
 # Buat config client SSL
-cat > /etc/openvpn/client-tcp-ssl.ovpn <<-END
+cat > /etc/openvpn/ssl.ovpn <<-END
 client
 dev tun
 proto tcp
@@ -89,37 +113,38 @@ comp-lzo
 verb 3
 END
 
-sed -i $MYIP2 /etc/openvpn/client-tcp-ssl.ovpn;
+sed -i $MYIP2 /etc/openvpn/ssl.ovpn;
 
 cd
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
 /etc/init.d/openvpn restart
 
 # masukkan certificatenya ke dalam config client TCP 1194
-echo '<ca>' >> /etc/openvpn/client-tcp-1194.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/client-tcp-1194.ovpn
-echo '</ca>' >> /etc/openvpn/client-tcp-1194.ovpn
+echo '<ca>' >> /etc/openvpn/tcp.ovpn
+cat /etc/openvpn/server/ca.crt >> /etc/openvpn/tcp.ovpn
+echo '</ca>' >> /etc/openvpn/tcp.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( TCP 1194 )
-cp /etc/openvpn/client-tcp-1194.ovpn /home/vps/public_html/tcp.ovpn
+cp /etc/openvpn/tcp.ovpn /home/vps/public_html/tcp.ovpn
 
 # masukkan certificatenya ke dalam config client UDP 2200
-echo '<ca>' >> /etc/openvpn/client-udp-2200.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/client-udp-2200.ovpn
-echo '</ca>' >> /etc/openvpn/client-udp-2200.ovpn
+echo '<ca>' >> /etc/openvpn/udp.ovpn
+cat /etc/openvpn/server/ca.crt >> /etc/openvpn/udp.ovpn
+echo '</ca>' >> /etc/openvpn/udp.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( UDP 2200 )
-cp /etc/openvpn/client-udp-2200.ovpn /home/vps/public_html/udp.ovpn
+cp /etc/openvpn/udp.ovpn /home/vps/public_html/udp.ovpn
 
 # masukkan certificatenya ke dalam config client SSL
-echo '<ca>' >> /etc/openvpn/client-tcp-ssl.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/client-tcp-ssl.ovpn
-echo '</ca>' >> /etc/openvpn/client-tcp-ssl.ovpn
+echo '<ca>' >> /etc/openvpn/ssl.ovpn
+cat /etc/openvpn/server/ca.crt >> /etc/openvpn/ssl.ovpn
+echo '</ca>' >> /etc/openvpn/ssl.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( SSL )
-cp /etc/openvpn/client-tcp-ssl.ovpn /home/vps/public_html/ssl.ovpn
+cp /etc/openvpn/ssl.ovpn /home/vps/public_html/ssl.ovpn
 
 #firewall untuk memperbolehkan akses UDP dan akses jalur TCP
+
 iptables -t nat -I POSTROUTING -s 10.6.0.0/24 -o $ANU -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 10.7.0.0/24 -o $ANU -j MASQUERADE
 iptables-save > /etc/iptables.up.rules
@@ -136,7 +161,4 @@ systemctl start openvpn
 
 # Delete script
 history -c
-echo -e "Done Install OpenVPN" | lolcat
-figlet -f slant Jrtunnel - Fastnet | lolcat
-sleep 1
 rm -f /root/vpn.sh
