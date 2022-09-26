@@ -100,7 +100,7 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/Afdhan/sc/main/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<br><b><center><a href=\"https://wa.me/6282252655313\">AFDHAN</a> - <a href=\"https://wa.me/6283129011845\">NEZA</a> VPN PROJECT</center></b></br>" >> /home/vps/public_html/index.html
+echo "<pre><center><img src=https://clubssh.com/assets/img/roket.png data-original-height=120 data-original-width=120 height=320 width=320 /></a></center><br><center><font color=red size=50> SETUP BY: MAMANG WOII</b></font></center><center><br><font color=blue size=50> WA: 081265145723</b></font></center></pre>" >> /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/khairunisya/ssh/main/vps.conf"
 /etc/init.d/nginx restart
 
