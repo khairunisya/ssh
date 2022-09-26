@@ -6,6 +6,18 @@ sysctl -w net.ipv6.conf.default.disable_ipv6=1
 
 apt update
 
+# Getting
+MYIP=$(wget -qO- ipinfo.io/ip);
+echo "Checking VPS"
+IZIN=$(wget -qO- ipinfo.io/ip);
+
+rm -f setup.sh
+clear
+if [ -f "/home/domain" ]; then
+echo "Script Already Installed"
+exit 0
+fi
+
 apt install -y bzip2 gzip coreutils screen curl
 apt install python -y
 mkdir /var/lib/premium-script;
