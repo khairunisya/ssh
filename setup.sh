@@ -170,5 +170,5 @@ sleep 1
 rm -f setup.sh
 rm -f install-sldns.sh
 rm -f master.zip
-sleep 5
+sleep 3
 reboot
