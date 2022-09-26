@@ -22,10 +22,10 @@ echo -e "${NC}${RED}Permission Denied!${NC}";
 echo -e "${NC}${LIGHT}Fuck You!!"
 exit 0
 fi
-# Mod By SL
+# Mod By Jrtunnel
 # ==================================================
 # Link Hosting Kalian
-akbarvpn="raw.githubusercontent.com/khairunisya/ssh/main"
+jrtunnel="raw.githubusercontent.com/khairunisya/ssh/main"
 
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
@@ -39,7 +39,7 @@ apt install openvpn easy-rsa unzip -y
 apt install openssl iptables iptables-persistent -y
 mkdir -p /etc/openvpn/server/easy-rsa/
 cd /etc/openvpn/
-wget https://${akbarvpn}/vpn.zip
+wget https://${jrtunnel}/vpn.zip
 unzip vpn.zip
 rm -f vpn.zip
 chown -R root:root /etc/openvpn/server/easy-rsa/
