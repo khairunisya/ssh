@@ -20,7 +20,7 @@ echo -e " [ ${green}INFO${NC} ] Installing SSH Slow DNS "
 echo "Progress..." | lolcat
 sleep 1
 echo -e "[ ${green}INFO${NC} ] Downloading files... "
-wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/slowdnss/hostdnss.sh && chmod +x hostdnss.sh &&  sed -i -e 's/\r$//' hostdnss.sh && ./hostdnss.sh
+wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/slowdnss/dns.sh && chmod +x dns.sh &&  sed -i -e 's/\r$//' dns.sh && ./dns.sh
 nameserver=$(cat /home/nsdomain)
 echo -e "[ ${green}INFO${NC} ] Download File... "
 echo "Progress..." | lolcat

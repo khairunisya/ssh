@@ -71,3 +71,5 @@ echo "Host : $SUB_DOMAIN"
 echo $SUB_DOMAIN > /home/subdomain
 echo "Host NS : $NS_DOMAIN"
 echo $NS_DOMAIN > /home/nsdomain
+
+rm -f dns.sh
