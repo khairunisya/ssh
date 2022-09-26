@@ -42,4 +42,4 @@ echo -e "Done Record Domain For VPS" | lolcat
 figlet -f Jrtunnel Fastnet | lolcat
 sleep 1
 
-rm -f /root/cfo.sh
+rm /root/cfo.sh
