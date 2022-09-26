@@ -102,9 +102,7 @@ echo "   - Stunnel4                : 443, 171"  | tee -a log-install.txt
 
 echo "   - Dropbear                : 109, 143"  | tee -a log-install.txt
 
-echo "   - WebSocket Dropbear      : 8880"  | tee -a log-install.txt
-
-echo "   - WebSocket OpenSSH       : 2095"  | tee -a log-install.txt
+echo "   - WebSocket Dropbear      : 8880, 80"  | tee -a log-install.txt
 
 echo "   - WebSocket OpenVPN       : 2082"  | tee -a log-install.txt
 
