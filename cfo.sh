@@ -38,8 +38,7 @@ RESULT=$(curl -sLX PUT "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_r
 echo "Host : $SUB_DOMAIN"
 echo $SUB_DOMAIN > /home/domain
 
-echo -e "Done Record Domain For VPS" | lolcat
-figlet -f Jrtunnel Fastnet | lolcat
+echo -e "Done Record Domain For VPS"
 sleep 1
 
 rm /root/cfo.sh

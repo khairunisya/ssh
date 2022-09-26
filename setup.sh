@@ -123,7 +123,7 @@ echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
 
 echo "   - Nginx                   : 81"  | tee -a log-install.txt
 
-echo "   - Wireguard               : 7070"  | tee -a log-install.txt
+echo "   - Wireguard               : 51820"  | tee -a log-install.txt
 
 echo ""  | tee -a log-install.txt
 
