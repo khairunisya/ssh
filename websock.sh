@@ -93,14 +93,12 @@ systemctl daemon-reload
 
 # Activated
 systemctl enable ws-dropbear.service
-systemctl enable ws-dropbear2.service
 systemctl enable ws-openssh.service
 systemctl enable ws-openvpn.service
 systemctl enable ws-stunnel.service
 
 # Restart
 systemctl restart ws-dropbear.service
-systemctl restart ws-dropbear2.service
 systemctl restart ws-openssh.service
 systemctl restart ws-openvpn.service
 systemctl restart ws-stunnel.service
