@@ -83,7 +83,7 @@ apt-get -y install libnss3-dev libnspr4-dev pkg-config \
 fi
 bigecho "Compiling and installing Libreswan..."
 
-SWAN_VER=3.12
+SWAN_VER=4.1
 swan_file="libreswan-$SWAN_VER.tar.gz"
 swan_url1="https://github.com/libreswan/libreswan/archive/v$SWAN_VER.tar.gz"
 swan_url2="https://download.libreswan.org/$swan_file"
@@ -126,13 +126,13 @@ fi
 
 bigecho "Creating VPN configuration..."
 
-L2TP_NET=10.10.10.0/24
-L2TP_LOCAL=10.10.10.1
-L2TP_POOL=10.10.10.2-10.10.10.254
-XAUTH_NET=192.168.43.0/24
-XAUTH_POOL=192.168.43.10-192.168.43.250
-DNS_SRV1=8.8.8.8
-DNS_SRV2=8.8.4.4
+L2TP_NET=${VPN_L2TP_NET:-'192.168.42.0/24'}
+L2TP_LOCAL=${VPN_L2TP_LOCAL:-'192.168.42.1'}
+L2TP_POOL=${VPN_L2TP_POOL:-'192.168.42.10-192.168.42.250'}
+XAUTH_NET=${VPN_XAUTH_NET:-'192.168.43.0/24'}
+XAUTH_POOL=${VPN_XAUTH_POOL:-'192.168.43.10-192.168.43.250'}
+DNS_SRV1=${VPN_DNS_SRV1:-'8.8.8.8'}
+DNS_SRV2=${VPN_DNS_SRV2:-'8.8.4.4'}
 DNS_SRVS="\"$DNS_SRV1 $DNS_SRV2\""
 [ -n "$VPN_DNS_SRV1" ] && [ -z "$VPN_DNS_SRV2" ] && DNS_SRVS="$DNS_SRV1"
 
@@ -274,9 +274,25 @@ END
 
 bigecho "Updating IPTables rules..."
 service fail2ban stop >/dev/null 2>&1
-iptables -t nat -I POSTROUTING -s 10.10.10.0/24 -o $NET_IFACE -j MASQUERADE
-iptables -t nat -I POSTROUTING -s 192.168.43.0/24 -o $NET_IFACE -j MASQUERADE
-iptables -t nat -I POSTROUTING -s 192.168.41.0/24 -o $NET_IFACE -j MASQUERADE
+  iptables -I INPUT 1 -p udp --dport 1701 -m policy --dir in --pol none -j DROP
+  iptables -I INPUT 2 -m conntrack --ctstate INVALID -j DROP
+  iptables -I INPUT 3 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+  iptables -I INPUT 4 -p udp -m multiport --dports 500,4500 -j ACCEPT
+  iptables -I INPUT 5 -p udp --dport 1701 -m policy --dir in --pol ipsec -j ACCEPT
+  iptables -I INPUT 6 -p udp --dport 1701 -j DROP
+  iptables -I FORWARD 1 -m conntrack --ctstate INVALID -j DROP
+  iptables -I FORWARD 2 -i "$NET_IFACE" -o ppp+ -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+  iptables -I FORWARD 3 -i ppp+ -o "$NET_IFACE" -j ACCEPT
+  iptables -I FORWARD 4 -i ppp+ -o ppp+ -s "$L2TP_NET" -d "$L2TP_NET" -j ACCEPT
+  iptables -I FORWARD 5 -i "$NET_IFACE" -d "$XAUTH_NET" -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+  iptables -I FORWARD 6 -s "$XAUTH_NET" -o "$NET_IFACE" -j ACCEPT
+  # Uncomment to disallow traffic between VPN clients
+  # iptables -I FORWARD 2 -i ppp+ -o ppp+ -s "$L2TP_NET" -d "$L2TP_NET" -j DROP
+  # iptables -I FORWARD 3 -s "$XAUTH_NET" -d "$XAUTH_NET" -j DROP
+  iptables -A FORWARD -j DROP
+  iptables -t nat -I POSTROUTING -s "$XAUTH_NET" -o "$NET_IFACE" -m policy --dir out --pol none -j MASQUERADE
+  iptables -t nat -I POSTROUTING -s "$L2TP_NET" -o "$NET_IFACE" -j MASQUERADE
+  iptables -t nat -I POSTROUTING -s 192.168.41.0/24 -o $NET_IFACE -j MASQUERADE
 if [[ ${OS} == "centos" ]]; then
 service iptables save
 iptables-restore < /etc/sysconfig/iptables 
