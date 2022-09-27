@@ -24,15 +24,10 @@ echo -e "$y-------------------------------------------------------------$wh"
 echo -e "$yy 6$y.Create Account L2TP"
 echo -e "$yy 7$y.Delete Account L2TP"
 echo -e ""
-echo -e "$y PPTP $wh"
-echo -e "$y-------------------------------------------------------------$wh"
-echo -e "$yy 8$y.Create Account PPTP"
-echo -e "$yy 9$y.Delete Account PPTP"
-echo -e ""
 echo -e "$y WIREGUARD $wh"
 echo -e "$y-------------------------------------------------------------$wh"
-echo -e "$yy 10$y.Create Account Wireguard"
-echo -e "$yy 11$y.Delete Account Wireguard"
+echo -e "$yy 8$y.Create Account Wireguard"
+echo -e "$yy 9$y.Delete Account Wireguard"
 echo -e ""
 echo -e "$y-------------------------------------------------------------$wh"
 echo -e ""
@@ -61,15 +56,9 @@ addl2tp
 dell2tp
 ;;
 8)
-addpptp
-;;
-9)
-delpptp
-;;
-10)
 addwg
 ;;
-11)
+9)
 delwg
 ;;
 *)
