@@ -7,11 +7,11 @@ apt install jq curl -y
 
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c5)
 subsl=$(</dev/urandom tr -dc a-x0-9 | head -c5)
-DOMAIN=sedang.my.id
-SUB_DOMAIN=vpn-${sub}.sedang.my.id
-NS_DOMAIN=ns-${subsl}.sedang.my.id
-CF_ID=sshsedang@gmail.com
-CF_KEY=eaeddbd9e3cf97d4b889bd7fbae56b60bba63
+DOMAIN=dnsvstunnel.xyz
+SUB_DOMAIN=vpn-${sub}.dnsvstunnel.xyz
+NS_DOMAIN=ns-${subsl}.dnsvstunnel.xyz
+CF_ID=vstunnel@gmail.com
+CF_KEY=bf2f943aba9cefaf4cc246ab198519ab15e93
 
 
 set -euo pipefail
