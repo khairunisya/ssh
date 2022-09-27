@@ -70,7 +70,7 @@ L2TP/IPSEC PSK VPN
 ============================
 IP/Host    : $PUBLIC_IP
 Domain     : $domain
-IPsec PSK  : jrtunnel
+IPsec PSK  : jrtunnel.com
 Username   : $VPN_USER
 Password   : $VPN_PASSWORD
 Created    : $hariini
