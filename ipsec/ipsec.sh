@@ -531,9 +531,6 @@ EOF
 
 wget -O /usr/bin/addl2tp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/addl2tp.sh && chmod +x /usr/bin/addl2tp
 wget -O /usr/bin/dell2tp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/dell2tp.sh && chmod +x /usr/bin/dell2tp
-wget -O /usr/bin/addpptp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/addpptp.sh && chmod +x /usr/bin/addpptp
-wget -O /usr/bin/delpptp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/delpptp.sh && chmod +x /usr/bin/delpptp
-wget -O /usr/bin/renewpptp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/renewpptp.sh && chmod +x /usr/bin/renewpptp
 wget -O /usr/bin/renewl2tp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/renewl2tp.sh && chmod +x /usr/bin/renewl2tp
 touch /var/lib/premium-script/data-user-l2tp
 touch /var/lib/premium-script/data-user-pptp
