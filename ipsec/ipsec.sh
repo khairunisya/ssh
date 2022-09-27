@@ -30,7 +30,7 @@ fi
 # Link Hosting Kalian
 jrtunnel="raw.githubusercontent.com/khairunisya/ssh/main/ipsec"
 
-VPN_IPSEC_PSK='jrtunnel'
+VPN_IPSEC_PSK='jrtunnel.com'
 NET_IFACE=$(ip -o $NET_IFACE -4 route show to default | awk '{print $5}');
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 source /etc/os-release
@@ -80,7 +80,7 @@ apt-get -y install libnss3-dev libnspr4-dev pkg-config \
 fi
 bigecho "Compiling and installing Libreswan..."
 
-SWAN_VER=3.32
+SWAN_VER=4.7
 swan_file="libreswan-$SWAN_VER.tar.gz"
 swan_url1="https://github.com/libreswan/libreswan/archive/v$SWAN_VER.tar.gz"
 swan_url2="https://download.libreswan.org/$swan_file"
@@ -123,9 +123,9 @@ fi
 
 bigecho "Creating VPN configuration..."
 
-L2TP_NET=192.168.42.0/24
-L2TP_LOCAL=192.168.42.1
-L2TP_POOL=192.168.42.10-192.168.42.250
+L2TP_NET=10.10.10.0/24
+L2TP_LOCAL=10.10.10.1
+L2TP_POOL=10.10.10.2-10.10.10.254
 XAUTH_NET=192.168.43.0/24
 XAUTH_POOL=192.168.43.10-192.168.43.250
 DNS_SRV1=8.8.8.8
@@ -271,9 +271,8 @@ END
 
 bigecho "Updating IPTables rules..."
 service fail2ban stop >/dev/null 2>&1
+iptables -t nat -I POSTROUTING -s 10.10.10.0/24 -o $NET_IFACE -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 192.168.43.0/24 -o $NET_IFACE -j MASQUERADE
-iptables -t nat -I POSTROUTING -s 192.168.42.0/24 -o $NET_IFACE -j MASQUERADE
-iptables -t nat -I POSTROUTING -s 192.168.41.0/24 -o $NET_IFACE -j MASQUERADE
 if [[ ${OS} == "centos" ]]; then
 service iptables save
 iptables-restore < /etc/sysconfig/iptables 
