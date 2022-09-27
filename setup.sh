@@ -78,7 +78,7 @@ systemctl daemon-reload
 
 systemctl enable autosett
 
-wget -O /etc/set.sh "https://raw.githubusercontent.com/Afdhan/sc/main/set.sh"
+wget -O /etc/set.sh "https://raw.githubusercontent.com/khairunisya/ssh/main/set.sh"
 
 chmod +x /etc/set.sh
 
