@@ -237,13 +237,13 @@ conf_bk "/etc/ipsec.conf"
 cat > /etc/ipsec.conf <<EOF
 version 2.0
 
-config setup
+  config setup
   virtual-private=%v4:10.0.0.0/8,%v4:192.168.0.0/16,%v4:172.16.0.0/12,%v4:!$L2TP_NET,%v4:!$XAUTH_NET
   protostack=netkey
   interfaces=%defaultroute
   uniqueids=no
 
-conn shared
+  conn shared
   left=%defaultroute
   leftid=$PUBLIC_IP
   right=%any
@@ -260,7 +260,7 @@ conn shared
   phase2alg=aes_gcm-null,aes128-sha1,aes256-sha1,aes256-sha2_512,aes128-sha2,aes256-sha2
   sha2-truncbug=no
 
-conn l2tp-psk
+  conn l2tp-psk
   auto=add
   leftprotoport=17/1701
   rightprotoport=17/%any
@@ -268,7 +268,7 @@ conn l2tp-psk
   phase2=esp
   also=shared
 
-conn xauth-psk
+  conn xauth-psk
   auto=add
   leftsubnet=0.0.0.0/0
   rightaddresspool=$XAUTH_POOL
