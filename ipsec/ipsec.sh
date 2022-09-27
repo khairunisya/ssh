@@ -273,6 +273,7 @@ bigecho "Updating IPTables rules..."
 service fail2ban stop >/dev/null 2>&1
 iptables -t nat -I POSTROUTING -s 10.10.10.0/24 -o $NET_IFACE -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 192.168.43.0/24 -o $NET_IFACE -j MASQUERADE
+iptables --table nat --append POSTROUTING --jump MASQUERADE
 if [[ ${OS} == "centos" ]]; then
 service iptables save
 iptables-restore < /etc/sysconfig/iptables 
