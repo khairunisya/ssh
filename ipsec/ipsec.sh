@@ -350,6 +350,30 @@ cat > /etc/ipsec.d/passwd <<EOF
 $VPN_USER:$VPN_PASSWORD_ENC:xauth-psk
 EOF
 
+# Create PPTP config
+cat >/etc/pptpd.conf <<END
+option /etc/ppp/options.pptpd
+logwtmp
+localip 192.168.41.1
+remoteip 192.168.41.10-100
+END
+cat >/etc/ppp/options.pptpd <<END
+name pptpd
+refuse-pap
+refuse-chap
+refuse-mschap
+require-mschap-v2
+require-mppe-128
+ms-dns 8.8.8.8
+ms-dns 8.8.4.4
+proxyarp
+lock
+nobsdcomp 
+novj
+novjccomp
+nologfd
+END
+
 bigecho "Updating sysctl settings..."
 
 if ! grep -qs "hwdsl2 VPN script" /etc/sysctl.conf; then
@@ -418,6 +442,7 @@ if [ "$ipt_flag" = "1" ]; then
   iptables -A FORWARD -j DROP
   iptables -t nat -I POSTROUTING -s "$XAUTH_NET" -o "$NET_IFACE" -m policy --dir out --pol none -j MASQUERADE
   iptables -t nat -I POSTROUTING -s "$L2TP_NET" -o "$NET_IFACE" -j MASQUERADE
+  iptables -t nat -I POSTROUTING -s 192.168.41.0/24 -o $NET_IFACE -j MASQUERADE
   echo "# Modified by hwdsl2 VPN script" > "$IPT_FILE"
   iptables-save >> "$IPT_FILE"
 
@@ -503,6 +528,7 @@ mkdir -p /run/pluto
 service fail2ban restart 2>/dev/null
 service ipsec restart 2>/dev/null
 service xl2tpd restart 2>/dev/null
+systemctl enable pptpd
 
 cat <<EOF
 
@@ -532,6 +558,8 @@ EOF
 wget -O /usr/bin/addl2tp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/addl2tp.sh && chmod +x /usr/bin/addl2tp
 wget -O /usr/bin/dell2tp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/dell2tp.sh && chmod +x /usr/bin/dell2tp
 wget -O /usr/bin/renewl2tp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/renewl2tp.sh && chmod +x /usr/bin/renewl2tp
+wget -O /usr/bin/addpptp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/addpptp.sh && chmod +x /usr/bin/addpptp
+wget -O /usr/bin/delpptp https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/delpptp.sh && chmod +x /usr/bin/delpptp
 touch /var/lib/premium-script/data-user-l2tp
 touch /var/lib/premium-script/data-user-pptp
 rm -f /root/ipsec.sh
