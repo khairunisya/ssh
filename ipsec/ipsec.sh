@@ -237,13 +237,13 @@ conf_bk "/etc/ipsec.conf"
 cat > /etc/ipsec.conf <<EOF
 version 2.0
 
-  config setup
+config setup
   virtual-private=%v4:10.0.0.0/8,%v4:192.168.0.0/16,%v4:172.16.0.0/12,%v4:!$L2TP_NET,%v4:!$XAUTH_NET
   protostack=netkey
   interfaces=%defaultroute
   uniqueids=no
 
-  conn shared
+conn shared
   left=%defaultroute
   leftid=$PUBLIC_IP
   right=%any
@@ -260,7 +260,7 @@ version 2.0
   phase2alg=aes_gcm-null,aes128-sha1,aes256-sha1,aes256-sha2_512,aes128-sha2,aes256-sha2
   sha2-truncbug=no
 
-  conn l2tp-psk
+conn l2tp-psk
   auto=add
   leftprotoport=17/1701
   rightprotoport=17/%any
@@ -268,7 +268,7 @@ version 2.0
   phase2=esp
   also=shared
 
-  conn xauth-psk
+conn xauth-psk
   auto=add
   leftsubnet=0.0.0.0/0
   rightaddresspool=$XAUTH_POOL
@@ -350,30 +350,6 @@ cat > /etc/ipsec.d/passwd <<EOF
 $VPN_USER:$VPN_PASSWORD_ENC:xauth-psk
 EOF
 
-# Create PPTP config
-cat >/etc/pptpd.conf <<END
-option /etc/ppp/options.pptpd
-logwtmp
-localip 192.168.41.1
-remoteip 192.168.41.10-100
-END
-cat >/etc/ppp/options.pptpd <<END
-name pptpd
-refuse-pap
-refuse-chap
-refuse-mschap
-require-mschap-v2
-require-mppe-128
-ms-dns 8.8.8.8
-ms-dns 8.8.4.4
-proxyarp
-lock
-nobsdcomp 
-novj
-novjccomp
-nologfd
-END
-
 bigecho "Updating sysctl settings..."
 
 if ! grep -qs "hwdsl2 VPN script" /etc/sysctl.conf; then
@@ -442,7 +418,6 @@ if [ "$ipt_flag" = "1" ]; then
   iptables -A FORWARD -j DROP
   iptables -t nat -I POSTROUTING -s "$XAUTH_NET" -o "$NET_IFACE" -m policy --dir out --pol none -j MASQUERADE
   iptables -t nat -I POSTROUTING -s "$L2TP_NET" -o "$NET_IFACE" -j MASQUERADE
-  iptables -t nat -I POSTROUTING -s 192.168.41.0/24 -o $NET_IFACE -j MASQUERADE
   echo "# Modified by hwdsl2 VPN script" > "$IPT_FILE"
   iptables-save >> "$IPT_FILE"
 
@@ -528,7 +503,6 @@ mkdir -p /run/pluto
 service fail2ban restart 2>/dev/null
 service ipsec restart 2>/dev/null
 service xl2tpd restart 2>/dev/null
-systemctl enable pptpd
 
 cat <<EOF
 
