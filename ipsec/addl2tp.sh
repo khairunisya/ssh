@@ -65,6 +65,16 @@ chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
 echo -e "### $VPN_USER $exp">>"/var/lib/premium-script/data-user-l2tp"
 cat <<EOF
 
+# Add or update VPN user
+cat >> /etc/ppp/chap-secrets <<EOF
+"$VPN_USER" pptpd "$VPN_PASSWORD" *
+EOF
+
+# Update file attributes
+chmod 600 /etc/ppp/chap-secrets*
+echo -e "### $VPN_USER $exp">>"/var/lib/premium-script/data-user-pptp"
+cat <<EOF
+
 ============================
 L2TP/IPSEC PSK VPN
 ============================

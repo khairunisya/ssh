@@ -90,7 +90,7 @@ apt-get -y install libnss3-dev libnspr4-dev pkg-config \
 fi
 bigecho "Compiling and installing Libreswan..."
 
-SWAN_VER=3.32
+SWAN_VER=4.1
 swan_file="libreswan-$SWAN_VER.tar.gz"
 swan_url1="https://github.com/libreswan/libreswan/archive/v$SWAN_VER.tar.gz"
 swan_url2="https://download.libreswan.org/$swan_file"
