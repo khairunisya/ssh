@@ -110,7 +110,7 @@ cd badvpn-master
 mkdir build
 cd build
 cmake .. -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
-sudo make install
+make install
 
 # Install Module
 apt install dnsutils jq -y

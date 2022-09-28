@@ -66,6 +66,7 @@ apt upgrade -y
 apt dist-upgrade -y
 apt-get remove --purge ufw firewalld -y
 apt-get remove --purge exim4 -y
+apt install cmake -y
 
 # install wget and curl
 apt -y install wget curl
