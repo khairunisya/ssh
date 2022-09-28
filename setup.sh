@@ -36,7 +36,7 @@ wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/bbr.sh && chmod 
 
 #wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/wireguard/wg.sh && chmod +x wg.sh && ./wg.sh
 
-wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/ipsec.sh && chmod +x ipsec.sh && ./ipsec.sh
+#wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/ipsec.sh && chmod +x ipsec.sh && ./ipsec.sh
 
 rm -f cfo.sh
 rm -f ssh-vpn.sh
