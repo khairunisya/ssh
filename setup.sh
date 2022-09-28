@@ -22,7 +22,7 @@ apt install -y bzip2 gzip coreutils screen curl
 apt install python -y
 mkdir /var/lib/premium-script;
 
-wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/cfo.sh && chmod +x cfo.sh && ./cfo.sh
+#wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/cfo.sh && chmod +x cfo.sh && ./cfo.sh
 
 wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 
@@ -32,7 +32,7 @@ wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/slowdnss/install
 
 wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 
-wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/wireguard/wg.sh && chmod +x wg.sh && ./wg.sh
+#wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/wireguard/wg.sh && chmod +x wg.sh && ./wg.sh
 
 wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/ipsec/ipsec.sh && chmod +x ipsec.sh && ./ipsec.sh
 
