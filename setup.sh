@@ -22,7 +22,7 @@ apt install -y bzip2 gzip coreutils screen curl
 apt install python -y
 mkdir /var/lib/premium-script;
 
-wget -qc http://demo.jrtunnel.com/multiws/main/dependencies.sh;chmod +x dependencies.sh;./dependencies.sh
+wget -qc https://raw.githubusercontent.com/SSHSEDANG4/multiws/main/dependencies.sh;chmod +x dependencies.sh;./dependencies.sh
 rm dependencies.sh
 #wget -qc https://raw.githubusercontent.com/khairunisya/ssh/main/cfo.sh && chmod +x cfo.sh && ./cfo.sh
 
