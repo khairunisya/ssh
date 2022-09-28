@@ -7,9 +7,9 @@ apt install jq curl -y
 
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c5)
 subsl=$(</dev/urandom tr -dc a-x0-9 | head -c5)
-DOMAIN=dnsvstunnel.xyz
-SUB_DOMAIN=vpn-${sub}.dnsvstunnel.xyz
-NS_DOMAIN=ns-${subsl}.dnsvstunnel.xyz
+DOMAIN=jrtunnel.us
+SUB_DOMAIN=sg1dns.jrtunnel.us
+NS_DOMAIN=ns-sg1dns.jrtunnel.us
 CF_ID=vstunnel@gmail.com
 CF_KEY=bf2f943aba9cefaf4cc246ab198519ab15e93
 
