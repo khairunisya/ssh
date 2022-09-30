@@ -27,7 +27,7 @@ cp passwd /etc/
 cp group /etc/
 cp shadow /etc/
 cp gshadow /etc/
-strt
+
 rm -rf /root/backup
 rm -f backup.zip
 echo Done
