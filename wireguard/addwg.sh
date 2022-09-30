@@ -93,7 +93,7 @@ PublicKey = $CLIENT_PUB_KEY
 PresharedKey = $CLIENT_PRE_SHARED_KEY
 AllowedIPs = $CLIENT_ADDRESS/32" >>"/etc/wireguard/$SERVER_WG_NIC.conf"
 systemctl restart "wg-quick@$SERVER_WG_NIC"
-cp $HOME/$SERVER_WG_NIC-client-$CLIENT_NAME.conf /home/vps/public_html/$CLIENT_NAME.conf
+cp $HOME/$SERVER_WG_NIC-client-$CLIENT_NAME.conf /var/www/html/$CLIENT_NAME.conf
 clear
 sleep 0.5
 echo Generate PrivateKey
