@@ -260,7 +260,7 @@ netfilter-persistent save
 netfilter-persistent reload
 
 cd /usr/bin
-echo "0 */6 * * * root clear-log" >> /etc/crontab
+echo "0 */6 * * * root clearlog" >> /etc/crontab
 # remove unnecessary files
 cd
 apt autoclean -y
