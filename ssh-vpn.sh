@@ -298,7 +298,7 @@ cd
 
 rm -f /root/key.pem
 rm -f /root/cert.pem
-rm -f /root/ssh-vpno.sh
+rm -f /root/ssh-vpn.sh
 
 cd
 
