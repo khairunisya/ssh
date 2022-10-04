@@ -300,6 +300,14 @@ rm -f /root/key.pem
 rm -f /root/cert.pem
 rm -f /root/ssh-vpno.sh
 
+cd
+cd /usr/bin
+wget -O clearlog "https://raw.githubusercontent.com/khairunisya/multi/main/clearlog.sh"
+
+chmod +x clearlog
+
+cd
+
 echo '#!/bin/bash' > /usr/local/bin/reboot_otomatis 
 echo 'tanggal=$(date +"%m-%d-%Y")' >> /usr/local/bin/reboot_otomatis 
 echo 'waktu=$(date +"%T")' >> /usr/local/bin/reboot_otomatis
