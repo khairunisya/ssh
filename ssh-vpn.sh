@@ -301,6 +301,7 @@ rm -f /root/cert.pem
 rm -f /root/ssh-vpno.sh
 
 cd
+
 cd /usr/bin
 wget -O clearlog "https://raw.githubusercontent.com/khairunisya/multi/main/clearlog.sh"
 
