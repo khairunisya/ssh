@@ -10,11 +10,7 @@ read -p "Expired (hari): " masaaktif
 
 
 source /var/lib/premium-script/ipvps.conf
-if [[ "$IP" = "" ]]; then
-domain=$(cat /home/domain)
-else
-domain=$IP
-fi
+
 wstls="$(cat ~/log-install.txt | grep -w "WebSocket TLS" | cut -d: -f2)"
 wsdrop="$(cat ~/log-install.txt | grep -w "WebSocket Dropbear" | cut -d: -f2)"
 wsssh="$(cat ~/log-install.txt | grep -w "WebSocket OpenSSH" | cut -d: -f2)"
