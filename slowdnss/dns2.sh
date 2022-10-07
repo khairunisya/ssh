@@ -8,8 +8,8 @@ apt install jq curl -y
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c5)
 subsl=$(</dev/urandom tr -dc a-x0-9 | head -c5)
 DOMAIN=monthlyssh.me
-SUB_DOMAIN=usdns.monthlyssh.me
-NS_DOMAIN=ns-usdns.monthlyssh.me
+SUB_DOMAIN=cadns.monthlyssh.me
+NS_DOMAIN=ns-cadns.monthlyssh.me
 CF_ID=vstunnel@gmail.com
 CF_KEY=bf2f943aba9cefaf4cc246ab198519ab15e93
 
