@@ -1,15 +1,17 @@
 #!/bin/bash
 
-bersih
+
 MYIP=$(wget -qO- ipinfo.io/ip);
 
 clear
+
+
+
 read -p "Username : " Login
 read -p "Password : " Pass
 read -p "Expired (hari): " masaaktif
 
 
-source /var/lib/premium-script/ipvps.conf
 
 wstls="$(cat ~/log-install.txt | grep -w "WebSocket TLS" | cut -d: -f2)"
 wsdrop="$(cat ~/log-install.txt | grep -w "WebSocket Dropbear" | cut -d: -f2)"
