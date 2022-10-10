@@ -61,4 +61,3 @@ cd /root
 rm terminal.sh
 
 clear
-reboot
