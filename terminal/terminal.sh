@@ -33,7 +33,6 @@ sleep 4
 ## hapus
 rm -rf /var/www/html/info.php
 rm -rf /var/www/html/vn
-rm -rf /var/www/html/vpnmon
 sleep 2
 echo -e "${NC}${GREEN}Menghapus File Success${NC}"
 sleep 5
@@ -41,20 +40,15 @@ echo -e "${NC}${PENDING}Import File Tunggu...${NC}"
 # // Download menu
 cd 
   
-wget -O /etc/stunnel/stunnel.pem "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/stunnel.pem"
-wget -O /usr/bin/sshws "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/sshws"
+wget -O /usr/local/bin/sshws "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/sshws"
 wget -O /var/www/html/index.html "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/index.html"
 wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/squid.conf"
-wget -O /home/banner "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/banner"
+wget -O /etc/gegevps/banner "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/banner"
 
 echo -e "${NC}${GREEN}Success${NC}"
 sleep 5
 
 cd
-
-systemctl enable stunnel4
-systemctl start stunnel4
-systemctl restart stunnel4
 
 cd /root
 
