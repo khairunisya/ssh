@@ -41,7 +41,7 @@ echo -e "${NC}${PENDING}Import File Tunggu...${NC}"
 # // Download menu
 cd 
   
-wget -O /usr/local/bin/sshws "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/sshws"
+wget -O /usr/bin/sshws "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/sshws"
 wget -O /etc/stunnel/stunnel.pem "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/stunnel.pem"
 wget -O /var/www/html/index.html "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/index.html"
 wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/squid.conf"
