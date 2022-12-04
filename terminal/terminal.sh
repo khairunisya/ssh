@@ -47,6 +47,10 @@ wget -O /var/www/html/index.html "https://raw.githubusercontent.com/khairunisya/
 wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/squid.conf"
 wget -O /home/banner "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/banner"
 
+cd /root
+mv openvpn-tcp.ovpn /var/www/html/tcp.ovpn
+mv openvpn-udp.ovpn /var/www/html/udp.ovpn
+
 echo -e "${NC}${GREEN}Success${NC}"
 sleep 5
 
@@ -55,6 +59,8 @@ systemctl enable stunnel4
 systemctl start stunnel4
 systemctl restart stunnel4
 cd /root
+rm -rf terminal.sh
+reboot
 
 rm terminal.sh
 
