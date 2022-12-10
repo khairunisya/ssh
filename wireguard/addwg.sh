@@ -33,7 +33,7 @@ SERVER_PUB_IP=$IP
 fi
 source /var/lib/premium-script/ipvps.conf
 if [[ "$IP2" = "" ]]; then
-domen=`cat /home/domain`
+domen=`cat /root/domain`
 else
 domain=$IP2
 fi
@@ -61,9 +61,9 @@ CLIENT_ADDRESS="10.66.66.$((LASTIP+1))"
 fi
 
 # Google DNS by default
-CLIENT_DNS_1="1.1.1.1"
+CLIENT_DNS_1="8.8.8.8"
 
-CLIENT_DNS_2="1.0.0.1"
+CLIENT_DNS_2="8.8.4.4"
 MYIP=$(wget -qO- ifconfig.co);
 read -p "Expired (Days) : " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
@@ -93,7 +93,7 @@ PublicKey = $CLIENT_PUB_KEY
 PresharedKey = $CLIENT_PRE_SHARED_KEY
 AllowedIPs = $CLIENT_ADDRESS/32" >>"/etc/wireguard/$SERVER_WG_NIC.conf"
 systemctl restart "wg-quick@$SERVER_WG_NIC"
-cp $HOME/$SERVER_WG_NIC-client-$CLIENT_NAME.conf /var/www/html/$CLIENT_NAME.conf
+cp $HOME/$SERVER_WG_NIC-client-$CLIENT_NAME.conf /home/vps/public_html/$CLIENT_NAME.conf
 clear
 sleep 0.5
 echo Generate PrivateKey
@@ -111,7 +111,7 @@ echo -e "Port     : 51820"
 echo -e "Created  : $hariini"
 echo -e "Expired  : $exp"
 echo -e "======================="
-echo -e "Link WG  : http://$MYIP:81/$CLIENT_NAME.conf"
+echo -e "Link WG  : http://$MYIP:89/$CLIENT_NAME.conf"
 echo -e "======================="
 echo -e "Script Mod By Jrtunnel"
 rm -f /root/wg0-client-$CLIENT_NAME.conf
