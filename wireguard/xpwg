@@ -33,7 +33,7 @@ d2=$(date -d "$now" +%s)
 exp2=$(( (d1 - d2) / 86400 ))
 if [[ "$exp2" = "0" ]]; then
 sed -i "/^### Client $user $exp/,/^AllowedIPs/d" /etc/wireguard/wg0.conf
-rm -f "/var/www/html/$user.conf"
+rm -f "/home/vps/public_html/$user.conf"
 fi
 done
 systemctl restart wg-quick@wg0
