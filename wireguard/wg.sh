@@ -118,11 +118,11 @@ cd /usr/bin
 wget -O addwg "https://raw.githubusercontent.com/khairunisya/ssh/main/wireguard/addwg.sh"
 wget -O delwg "https://raw.githubusercontent.com/khairunisya/ssh/main/wireguard/delwg.sh"
 wget -O renewwg "https://raw.githubusercontent.com/khairunisya/ssh/main/wireguard/renewwg.sh"
-wget https://raw.githubusercontent.com/khairunisya/ssh/main/wireguard/xp
+wget https://raw.githubusercontent.com/khairunisya/ssh/main/wireguard/xpwg
 chmod +x addwg
 chmod +x delwg
 chmod +x renewwg
-chmod +x xp
+chmod +x xpwg
 cd
-echo "0 0 * * * root xp" >> /etc/crontab
+echo "0 0 * * * root xpwg" >> /etc/crontab
 rm -f /root/wg.sh
