@@ -81,7 +81,7 @@ DNS = $CLIENT_DNS_1
 [Peer]
 PublicKey = $SERVER_PUB_KEY
 Endpoint = $ENDPOINT
-AllowedIPs = 0.0.0.0/0,::/0" >>"$HOME/$SERVER_WG_NIC-client-$CLIENT_NAME.conf"
+AllowedIPs = 0.0.0.0/0" >>"$HOME/$SERVER_WG_NIC-client-$CLIENT_NAME.conf"
 
 # Add the client as a peer to the server
 echo -e "### Client $CLIENT_NAME $exp
