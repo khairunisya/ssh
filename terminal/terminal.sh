@@ -60,8 +60,8 @@ chmod -R g+rw /home/vps/public_html
 echo "<pre>Setup BY Jrtunnel</pre>" >/home/vps/public_html/index.html
 systemctl start nginx
 cd /var/www/html/
-mv openvpn-tcp.ovpn /home/vps/public_html/tcp.ovpn
-mv openvpn-udp.ovpn /home/vps/public_html/udp.ovpn
+cp openvpn-tcp.ovpn /home/vps/public_html/tcp.ovpn
+cp openvpn-udp.ovpn /home/vps/public_html/udp.ovpn
 cd /root
 mv openvpn-tcp.ovpn /var/www/html/tcp.ovpn
 mv openvpn-udp.ovpn /var/www/html/udp.ovpn
