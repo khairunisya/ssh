@@ -34,6 +34,7 @@ sleep 4
 rm -rf /var/www/html/info.php
 rm -rf /var/www/html/vn
 rm -rf /var/www/html/vpnmon
+rm -rf /root/sshovpn.sh
 sleep 2
 echo -e "${NC}${GREEN}Menghapus File Success${NC}"
 sleep 5
@@ -47,6 +48,18 @@ wget -O /var/www/html/index.html "https://raw.githubusercontent.com/khairunisya/
 wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/squid.conf"
 wget -O /home/banner "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/banner"
 
+cd /root/
+apt install nginx -y
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/khairunisya/global/main/nginx.conf"
+wget -O /etc/nginx/conf.d/xray.conf "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/xray.conf"
+rm -rf /etc/nginx/conf.d/default.conf
+systemctl enable nginx
+mkdir -p /home/vps/public_html
+chown -R www-data:www-data /home/vps/public_html
+chmod -R g+rw /home/vps/public_html
+echo "<pre>Setup BY Jrtunnel</pre>" >/home/vps/public_html/index.html
+systemctl start nginx
+cd
 cd /root
 mv openvpn-tcp.ovpn /var/www/html/tcp.ovpn
 mv openvpn-udp.ovpn /var/www/html/udp.ovpn
