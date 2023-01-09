@@ -49,6 +49,7 @@ wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/khairunisya/ssh
 wget -O /home/banner "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/banner"
 
 cd /root/
+dpkg --configure -a
 apt install nginx -y
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/khairunisya/global/main/nginx.conf"
 wget -O /etc/nginx/conf.d/xray.conf "https://raw.githubusercontent.com/khairunisya/ssh/main/terminal/xray.conf"
