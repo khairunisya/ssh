@@ -71,6 +71,9 @@ echo -e "${NC}${GREEN}Success${NC}"
 sleep 5
 
 cd
+touch /etc/ssh/.ssh.db
+echo "& plughin Account" >> /etc/ssh/.ssh.db
+
 systemctl enable stunnel4
 systemctl start stunnel4
 systemctl restart stunnel4
